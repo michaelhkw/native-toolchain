@@ -94,7 +94,11 @@ fi
 ################################################################################
 # Build protobuf
 ################################################################################
-PROTOBUF_VERSION=2.6.1 $SOURCE_DIR/source/protobuf/build.sh
+if (( BUILD_HISTORICAL )) ; then
+  PROTOBUF_VERSION=2.6.1 $SOURCE_DIR/source/protobuf/build.sh
+fi
+
+PROTOBUF_VERSION=3.5.1 $SOURCE_DIR/source/protobuf/build.sh
 
 ################################################################################
 # Build libev
@@ -320,7 +324,7 @@ KRB5_VERSION=1.15.1 $SOURCE_DIR/source/krb5/build.sh
 ################################################################################
 (
   export LZ4_VERSION=1.7.5
-  export PROTOBUF_VERSION=2.6.1
+  export PROTOBUF_VERSION=3.5.1
   export SNAPPY_VERSION=1.1.4
   export ZLIB_VERSION=1.2.8
   export ORC_VERSION=1.4.3-p2
